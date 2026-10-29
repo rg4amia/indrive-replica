@@ -13,25 +13,28 @@ class BottomPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final p = pal(context);
-    return Container(
+    return ConstrainedBox(
       constraints: BoxConstraints(maxHeight: MediaQuery.sizeOf(context).height * maxHeightFactor),
-      decoration: BoxDecoration(
+      // Material et non DecoratedBox : les ListTile et interrupteurs à l'intérieur ont besoin d'un Material.
+      child: Material(
         color: p.bg,
+        elevation: 8,
+        shadowColor: const Color(0x33000000),
         borderRadius: const BorderRadius.vertical(top: Radius.circular(AppRadius.sheet)),
-        boxShadow: const [BoxShadow(color: Color(0x24000000), blurRadius: 24, offset: Offset(0, -4))],
-      ),
-      child: SafeArea(
-        top: false,
-        child: Column(mainAxisSize: MainAxisSize.min, children: [
-          const SizedBox(height: AppSpace.s2),
-          Container(width: 36, height: 4, decoration: BoxDecoration(color: p.border, borderRadius: BorderRadius.circular(2))),
-          Flexible(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(AppSpace.s4, AppSpace.s3, AppSpace.s4, AppSpace.s4),
-              child: child,
+        clipBehavior: Clip.antiAlias,
+        child: SafeArea(
+          top: false,
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
+            const SizedBox(height: AppSpace.s2),
+            Container(width: 36, height: 4, decoration: BoxDecoration(color: p.border, borderRadius: BorderRadius.circular(2))),
+            Flexible(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(AppSpace.s4, AppSpace.s3, AppSpace.s4, AppSpace.s4),
+                child: child,
+              ),
             ),
-          ),
-        ]),
+          ]),
+        ),
       ),
     );
   }
@@ -113,7 +116,7 @@ class InfoRow extends StatelessWidget {
     final p = pal(context);
     return Semantics(
       button: onTap != null,
-      label: [title, if (subtitle != null) subtitle!, if (badge != null && badge! > 0) '$badge non lues'].join(', '),
+      label: [title, ?subtitle, if (badge != null && badge! > 0) '$badge non lues'].join(', '),
       excludeSemantics: true,
       child: InkWell(
         onTap: onTap,
@@ -136,7 +139,7 @@ class InfoRow extends StatelessWidget {
                   decoration: BoxDecoration(color: p.danger, borderRadius: BorderRadius.circular(AppRadius.pill)),
                   child: Text('$badge', style: AppText.caption.copyWith(color: p.onDanger)),
                 ),
-              if (trailing != null) trailing!,
+              ?trailing,
             ]),
           ),
         ),

@@ -67,7 +67,8 @@ class FakeMapService implements MapService {
   Future<RouteInfo> route(Place from, Place to) async {
     final straight = haversineKm(from.lat, from.lng, to.lat, to.lng);
     final km = math.max(0.2, straight * 1.3);
-    final seconds = (km / 30 * 3600).round(); // 30 km/h de moyenne, sans trafic
+    final speed = km < 15 ? 25.0 : 55.0; // km/h moyen, sans trafic : ville lente, route rapide
+    final seconds = (km / speed * 3600).round();
     final mid = (lat: (from.lat + to.lat) / 2, lng: (from.lng + to.lng) / 2);
     return RouteInfo(
       distanceM: (km * 1000).round(),

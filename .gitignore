@@ -1,0 +1,8 @@
+.env
+.env.*
+!.env.example
+supabase/.env.local
+supabase/.temp/
+supabase/.branches/
+node_modules/
+build/

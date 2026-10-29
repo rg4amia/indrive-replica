@@ -310,7 +310,9 @@ class FakeRideRepository implements RideRepository {
   }
 
   @override
-  Stream<Ride?> watchDriverRide() => _watch(() => _rides.values.where((r) => r.driverId == currentUserId && r.isActive).firstOrNull);
+  // Le flux vise le chauffeur de démonstration, pas l'identité courante : avec Supabase, l'identité est
+  // fixée par la session ; ici elle change quand on bascule de mode, ce qui fausserait les abonnements.
+  Stream<Ride?> watchDriverRide() => _watch(() => _rides.values.where((r) => r.driverId == driverId && r.isActive).firstOrNull);
 
   @override
   Future<Ride> driverArrived(String rideId) async {
@@ -490,7 +492,7 @@ class FakeRideRepository implements RideRepository {
           dropoff: s.$3,
           category: Category.course,
           distanceM: dist,
-          durationS: dist * 2,
+          durationS: (dist / 1000 / 25 * 3600).round(),
           recommendedPrice: rec,
           offeredPrice: s.$4,
           expiresAt: _now().add(const Duration(minutes: 3)),

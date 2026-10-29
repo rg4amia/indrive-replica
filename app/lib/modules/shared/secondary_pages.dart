@@ -47,7 +47,7 @@ class _HistoryPageState extends State<HistoryPage> {
         return ListView.separated(
           padding: const EdgeInsets.all(AppSpace.s4),
           itemCount: c.history.length,
-          separatorBuilder: (_, __) => const SizedBox(height: AppSpace.s2),
+          separatorBuilder: (_, _) => const SizedBox(height: AppSpace.s2),
           itemBuilder: (_, i) {
             final r = c.history[i];
             final cancelled = r.status == RideStatus.cancelled;
@@ -144,7 +144,7 @@ class StubPage extends StatelessWidget {
       appBar: AppBar(backgroundColor: p.bg, foregroundColor: p.text, elevation: 0, title: Text(title, style: AppText.title)),
       body: ListView(padding: const EdgeInsets.all(AppSpace.s4), children: [
         EmptyState(icon: Icons.construction_outlined, title: 'Écran en préparation', message: "Cet écran ($ids) n'est pas encore construit. Voir replica/build-log.md."),
-        if (child != null) child!,
+        ?child,
       ]),
     );
   }

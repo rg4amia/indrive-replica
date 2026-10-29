@@ -83,14 +83,15 @@ class MenuButton extends StatelessWidget {
       button: true,
       label: 'Ouvrir le menu',
       excludeSemantics: true,
-      child: Material(
-        color: p.bg,
-        shape: const CircleBorder(),
-        elevation: 2,
-        child: InkWell(
-          customBorder: const CircleBorder(),
-          onTap: () => Scaffold.of(context).openDrawer(),
-          child: const SizedBox(width: AppSize.tapMin, height: AppSize.tapMin, child: Icon(Icons.menu)),
+      child: DecoratedBox(
+        decoration: BoxDecoration(color: p.bg, shape: BoxShape.circle, boxShadow: const [BoxShadow(color: Color(0x33000000), blurRadius: 6, offset: Offset(0, 2))]),
+        child: Material(
+          type: MaterialType.transparency,
+          child: InkWell(
+            customBorder: const CircleBorder(),
+            onTap: () => Scaffold.of(context).openDrawer(),
+            child: SizedBox(width: AppSize.tapMin, height: AppSize.tapMin, child: Icon(Icons.menu, color: p.text)),
+          ),
         ),
       ),
     );

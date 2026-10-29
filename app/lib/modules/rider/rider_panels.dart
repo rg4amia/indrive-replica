@@ -374,7 +374,7 @@ class RidePanel extends StatelessWidget {
                 Text('${r.vehicle} · ${r.plate}', style: AppText.small.copyWith(color: p.textMuted)),
               ]),
             ),
-            Text(formatMoney(r.agreedPrice), style: AppText.price.copyWith(color: p.text)),
+            Flexible(child: FittedBox(fit: BoxFit.scaleDown, child: Text(formatMoney(r.agreedPrice), style: AppText.price.copyWith(color: p.text)))),
           ]),
           const SizedBox(height: AppSpace.s4),
           if (r.status == RideStatus.toPickup && !r.passengerOnWay)

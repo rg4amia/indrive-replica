@@ -125,11 +125,16 @@ class PriceStepper extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         round('Baisser de ${formatMoney(step)}', Icons.remove, canDown ? price - step : null),
-        Semantics(
-          liveRegion: true,
-          label: formatMoney(price),
-          excludeSemantics: true,
-          child: Text(formatMoney(price), style: AppText.price.copyWith(color: p.text)),
+        Expanded(
+          child: Semantics(
+            liveRegion: true,
+            label: formatMoney(price),
+            excludeSemantics: true,
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(formatMoney(price), style: AppText.price.copyWith(color: p.text)),
+            ),
+          ),
         ),
         round('Monter de ${formatMoney(step)}', Icons.add, locked ? null : price + step),
       ],
@@ -153,7 +158,7 @@ class StatusChip extends StatelessWidget {
       decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(AppRadius.pill)),
       child: Row(mainAxisSize: MainAxisSize.min, children: [
         if (icon != null) ...[Icon(icon, size: 16, color: fg), const SizedBox(width: AppSpace.s1)],
-        Text(label, style: AppText.caption.copyWith(color: fg)),
+        Flexible(child: Text(label, style: AppText.caption.copyWith(color: fg), maxLines: 2, overflow: TextOverflow.ellipsis)),
       ]),
     );
   }
@@ -226,7 +231,7 @@ class _OfferCardState extends State<OfferCard> {
     final p = _p(context);
     final left = widget.expiresAt.difference(_now()).inSeconds.clamp(0, 999);
     final summary = '${formatMoney(widget.price)}, ${widget.etaMinutes} minutes, ${widget.driverName}, '
-        'note ${widget.rating.toStringAsFixed(2)} sur ${widget.rides} courses, ${widget.vehicle}'
+        'note ${widget.rating.toStringAsFixed(2).replaceAll('.', ',')} sur ${widget.rides} courses, ${widget.vehicle}'
         '${_expired ? ', offre expirée' : ', expire dans $left secondes'}';
     return Semantics(
       container: true,
@@ -244,7 +249,13 @@ class _OfferCardState extends State<OfferCard> {
             ),
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Row(crossAxisAlignment: CrossAxisAlignment.baseline, textBaseline: TextBaseline.alphabetic, children: [
-                Text(formatMoney(widget.price), style: AppText.price.copyWith(color: p.text)),
+                Flexible(
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.centerLeft,
+                    child: Text(formatMoney(widget.price), style: AppText.price.copyWith(color: p.text)),
+                  ),
+                ),
                 const SizedBox(width: AppSpace.s2),
                 Text('${widget.etaMinutes} min', style: AppText.title.copyWith(color: p.textMuted)),
               ]),
@@ -259,8 +270,16 @@ class _OfferCardState extends State<OfferCard> {
                 const SizedBox(width: AppSpace.s3),
                 Expanded(
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Text('${widget.driverName}  ★ ${widget.rating.toStringAsFixed(2)}  ${widget.rides} courses',
-                        style: AppText.body.copyWith(color: p.text), maxLines: 1, overflow: TextOverflow.ellipsis),
+                    Row(children: [
+                      Flexible(child: Text(widget.driverName, style: AppText.body.copyWith(color: p.text), maxLines: 1, overflow: TextOverflow.ellipsis)),
+                      const SizedBox(width: AppSpace.s2),
+                      Icon(Icons.star, size: 16, color: p.warning),
+                      const SizedBox(width: 2),
+                      Flexible(
+                        child: Text('${widget.rating.toStringAsFixed(2).replaceAll('.', ',')}  ${widget.rides} courses',
+                            style: AppText.small.copyWith(color: p.textMuted), maxLines: 1, overflow: TextOverflow.ellipsis),
+                      ),
+                    ]),
                     Text(widget.vehicle, style: AppText.small.copyWith(color: p.textMuted)),
                   ]),
                 ),

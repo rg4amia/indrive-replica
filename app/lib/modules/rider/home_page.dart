@@ -26,7 +26,7 @@ class RiderHomePage extends StatelessWidget {
           if (c.dropoff.value != null) MapPin(PinKind.dropoff, c.dropoff.value!.lat, c.dropoff.value!.lng),
         ];
         return Stack(children: [
-          Positioned.fill(child: MapCanvas(pins: pins, path: c.route.value?.path ?? const [], bottomPadding: 280)),
+          Positioned.fill(child: MapCanvas(pins: pins, path: c.route.value?.path ?? const [], bottomPadding: phase == RiderPhase.browse ? 200 : MediaQuery.sizeOf(context).height * 0.55)),
           Positioned(
             top: 0,
             left: 0,

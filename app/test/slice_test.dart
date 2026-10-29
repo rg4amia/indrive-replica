@@ -23,6 +23,7 @@ Future<void> boot(WidgetTester t, {FakeRideRepository? repo}) async {
 
 Future<void> finish(WidgetTester t) async {
   await t.pumpWidget(const SizedBox());
+  Get.deleteAll(force: true);
   Get.reset();
   await t.pump(const Duration(seconds: 70));
 }
@@ -51,8 +52,7 @@ void main() {
     expect(find.textContaining('Nous cherchons'), findsOneWidget);
     await t.pump(const Duration(seconds: 3));
     expect(find.text('Accepter'), findsOneWidget);
-    expect(find.text('Marcel'), findsNothing); // le nom est dans la ligne de résumé
-    expect(find.textContaining('Marcel'), findsWidgets);
+    expect(find.text('Marcel'), findsOneWidget);
 
     await t.tap(find.text('Accepter'));
     await t.pump(const Duration(milliseconds: 100));
@@ -135,7 +135,7 @@ void main() {
     expect(find.text('Vous êtes hors ligne'), findsOneWidget);
 
     await t.tap(find.text('Passer en ligne'));
-    await t.pump(const Duration(seconds: 2));
+    await t.pump(const Duration(seconds: 4)); // demandes simulées à 1,5 s, rafraîchissement toutes les 3 s
     expect(find.textContaining('demande'), findsWidgets);
     expect(find.text('Accepter'), findsWidgets);
 

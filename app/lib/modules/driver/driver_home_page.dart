@@ -29,7 +29,7 @@ class DriverHomePage extends StatelessWidget {
           ],
         ];
         return Stack(children: [
-          Positioned.fill(child: MapCanvas(pins: pins, bottomPadding: 280)),
+          Positioned.fill(child: MapCanvas(pins: pins, bottomPadding: MediaQuery.sizeOf(context).height * 0.5)),
           Positioned(
             top: 0,
             left: 0,
@@ -128,7 +128,13 @@ class _RequestCard extends StatelessWidget {
         decoration: BoxDecoration(color: p.surfaceRaised, borderRadius: BorderRadius.circular(AppRadius.lg), border: Border.all(color: p.border)),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(crossAxisAlignment: CrossAxisAlignment.baseline, textBaseline: TextBaseline.alphabetic, children: [
-            Text(formatMoney(req.offeredPrice), style: AppText.price.copyWith(color: p.text)),
+            Flexible(
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.centerLeft,
+                child: Text(formatMoney(req.offeredPrice), style: AppText.price.copyWith(color: p.text)),
+              ),
+            ),
             const SizedBox(width: AppSpace.s2),
             Text('à ${distanceLabel(r.pickupDistanceM)}', style: AppText.title.copyWith(color: p.textMuted)),
           ]),
@@ -228,7 +234,7 @@ class _ActiveRidePanel extends StatelessWidget {
             InfoRow(icon: Icons.flag_outlined, title: ride.request.dropoff.label),
             Row(children: [
               Expanded(child: Text('Prix convenu', style: AppText.body.copyWith(color: p.textMuted))),
-              Text(formatMoney(ride.agreedPrice), style: AppText.price.copyWith(color: p.text)),
+              Flexible(child: FittedBox(fit: BoxFit.scaleDown, child: Text(formatMoney(ride.agreedPrice), style: AppText.price.copyWith(color: p.text)))),
             ]),
             if (ride.status == RideStatus.toPickup)
               Padding(

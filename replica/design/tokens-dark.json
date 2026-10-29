@@ -1,0 +1,178 @@
+{
+  "_about": "Thème sombre. Mêmes rôles que tokens.json.",
+  "color": {
+    "bg": "#0f0f10",
+    "surface": "#1c1c1e",
+    "surface-raised": "#262628",
+    "border": "#3a3a3d",
+    "border-input": "#8e8e93",
+    "text": "#f4f4f5",
+    "text-muted": "#a1a1a8",
+    "accent": "#7c9bff",
+    "on-accent": "#0b1030",
+    "accent-soft": "#1c2750",
+    "on-accent-soft": "#c7d4ff",
+    "danger": "#ff6b66",
+    "on-danger": "#2a0605",
+    "danger-soft": "#3a1513",
+    "success": "#4cc38a",
+    "warning": "#f0b44c",
+    "scrim": "rgba(0,0,0,0.6)"
+  },
+  "pairs": [
+    [
+      "text",
+      "bg"
+    ],
+    [
+      "text",
+      "surface"
+    ],
+    [
+      "text-muted",
+      "bg"
+    ],
+    [
+      "text-muted",
+      "surface"
+    ],
+    [
+      "on-accent",
+      "accent"
+    ],
+    [
+      "on-accent-soft",
+      "accent-soft"
+    ],
+    [
+      "accent",
+      "bg"
+    ],
+    [
+      "on-danger",
+      "danger"
+    ],
+    [
+      "danger",
+      "bg"
+    ],
+    [
+      "danger",
+      "danger-soft"
+    ],
+    [
+      "success",
+      "bg"
+    ],
+    [
+      "warning",
+      "bg"
+    ],
+    [
+      "border-input",
+      "bg",
+      "ui"
+    ],
+    [
+      "border-input",
+      "surface",
+      "ui"
+    ],
+    [
+      "accent",
+      "bg",
+      "ui"
+    ]
+  ],
+  "font": {
+    "sans": "Inter, system-ui, -apple-system, Roboto, sans-serif",
+    "numeric": "tabular-nums"
+  },
+  "type": {
+    "caption": {
+      "size": 12,
+      "line": 16,
+      "weight": 500
+    },
+    "small": {
+      "size": 14,
+      "line": 20,
+      "weight": 400
+    },
+    "body": {
+      "size": 16,
+      "line": 24,
+      "weight": 400
+    },
+    "label": {
+      "size": 16,
+      "line": 24,
+      "weight": 600
+    },
+    "title": {
+      "size": 20,
+      "line": 28,
+      "weight": 700
+    },
+    "headline": {
+      "size": 24,
+      "line": 30,
+      "weight": 700
+    },
+    "price": {
+      "size": 28,
+      "line": 34,
+      "weight": 700
+    },
+    "display": {
+      "size": 36,
+      "line": 42,
+      "weight": 700
+    }
+  },
+  "space": [
+    0,
+    4,
+    8,
+    12,
+    16,
+    24,
+    32,
+    48
+  ],
+  "radius": {
+    "sm": 8,
+    "md": 12,
+    "lg": 16,
+    "sheet": 24,
+    "pill": 999
+  },
+  "size": {
+    "button-md": 48,
+    "button-lg": 56,
+    "tap-min": 48,
+    "input": 56,
+    "avatar-sm": 40,
+    "avatar-md": 56,
+    "map-pin": 40,
+    "sheet-handle": [
+      36,
+      4
+    ]
+  },
+  "shadow": {
+    "card": "0 1px 2px rgba(0,0,0,.06), 0 2px 8px rgba(0,0,0,.08)",
+    "sheet": "0 -4px 24px rgba(0,0,0,.14)"
+  },
+  "motion": {
+    "fast": "120ms",
+    "base": "200ms",
+    "ease": "cubic-bezier(.2,.8,.2,1)",
+    "offer-timer": "linear"
+  },
+  "layout": {
+    "design-width": 360,
+    "page-margin": 16,
+    "sheet-max-height-pct": 85
+  }
+}

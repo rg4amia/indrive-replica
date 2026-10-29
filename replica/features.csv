@@ -1,0 +1,68 @@
+feature,area,priority,original,clone,notes
+Inscription par téléphone avec code OTP,onboarding,must,yes,no,
+Choix du rôle passager ou chauffeur,onboarding,must,yes,no,
+Profil passager (nom photo),onboarding,must,yes,no,
+Carte avec position actuelle,commande,must,yes,no,
+Recherche d'adresse départ et arrivée,commande,must,yes,no,
+Prix recommandé calculé,commande,must,yes,no,formule non publique à concevoir
+Le passager propose son prix,commande,must,yes,no,cœur du produit
+Notes pour le chauffeur,commande,should,yes,no,
+Chauffeurs proches notifiés de la demande,appariement,must,yes,no,push + temps réel
+Le chauffeur accepte le prix,appariement,must,yes,no,
+Le chauffeur fait une contre-offre,appariement,must,yes,no,bande autour du prix recommandé
+Le passager compare les offres (prix voiture ETA note),appariement,must,yes,no,
+Le passager choisit un chauffeur,appariement,must,yes,no,
+Expiration des demandes sans offre,appariement,must,yes,no,
+Suivi du chauffeur en direct,course,must,yes,no,
+Démarrer et terminer la course,course,must,yes,no,
+Annulation avec motif,course,must,yes,no,
+Notation mutuelle,course,must,yes,no,
+Historique des courses,compte,should,yes,no,
+Reçu ou facture,compte,could,yes,no,
+Paiement en espèces,paiement,must,yes,no,
+Paiement par carte ou mobile money,paiement,should,yes,no,dépend du marché
+Inscription chauffeur avec documents,chauffeur,must,yes,no,
+Validation du chauffeur par un admin,chauffeur,must,yes,no,petit back-office
+Vérification photo du chauffeur,chauffeur,should,yes,no,via fournisseur
+Interrupteur en ligne/hors ligne,chauffeur,must,yes,no,
+Solde et commission prélevée,chauffeur,must,yes,no,
+Recharge du solde,chauffeur,should,yes,no,
+Gains par période,chauffeur,could,yes,no,
+Types de course (Standard Comfort XL),commande,should,yes,no,
+Chat ou appel passager-chauffeur,course,should,yes,no,numéro masqué
+Partage du trajet,sécurité,should,yes,no,
+Bouton SOS et contacts de confiance,sécurité,should,yes,no,
+Suppression et récupération de compte,compte,could,yes,no,exigence stores
+Multi-langues,compte,could,yes,no,
+Courses planifiées à l'avance,commande,could,yes,skip,hors périmètre choisi
+Livraison et coursier,autres services,could,yes,skip,hors périmètre choisi
+Interurbain et fret,autres services,could,yes,skip,hors périmètre choisi
+Base de chauffeurs et passagers existante,réseau,could,yes,skip,données et réseau d'inDrive non reproductibles
+Tarif recommandé préchargé avec stepper plus et moins (palier 100),commande,must,yes,no,vu sur captures
+Augmenter le prix pendant la recherche,appariement,must,yes,no,minuteur et message « demande prioritaire »
+Acceptation automatique du conducteur le plus proche,appariement,should,yes,no,
+Catégorie Un Clic,commande,could,yes,no,nouveau chez l'original
+Options de course (plus de 4 passagers siège enfant commentaire),commande,should,yes,no,
+Indicateur de précision du point de départ (porte d'entrée),commande,could,yes,no,
+Ajouter un arrêt sur le trajet,commande,could,yes,no,
+Badge de niveau du chauffeur (Platine),chauffeur,could,yes,no,
+Nombre de chauffeurs qui consultent la demande,appariement,could,yes,no,
+Minuteur d'expiration sur chaque offre,appariement,should,yes,no,
+Notifications dans l'app (sécurité promos),notifications,should,yes,no,
+Alerte de sécurité en cas d'activité inhabituelle,sécurité,could,yes,no,
+Bouton d'appel d'urgence local,sécurité,must,yes,no,numéro par pays
+Appels dans l'application,course,could,yes,no,
+Changer de numéro de téléphone,compte,could,yes,no,
+Mode clair sombre et unités de distance,compte,could,yes,no,
+Bouton « Je suis là » qui déclenche la commission,course,must,yes,no,règle confirmée par l'aide officielle
+Remboursement de commission si le passager ne vient pas ou annule tôt,paiement,must,yes,no,crédit sur le solde
+Taux de commission par zone,paiement,must,yes,no,
+Priorité du chauffeur (courses terminées notes annulations),appariement,should,yes,no,influence les demandes reçues
+Renvoi d'un document rejeté avec motif,chauffeur,must,yes,no,
+Numéro masqué appels et messages,sécurité,must,yes,no,fournisseur de téléphonie nécessaire
+Selfie de vérification du passager,sécurité,could,yes,no,
+Modifier l'itinéraire en cours de course,course,should,yes,no,tarif ajusté
+Signaler un objet oublié,compte,could,yes,no,
+Blocage en cas de prix réclamé hors app,sécurité,should,yes,no,règle métier admin
+Reçus et factures chauffeur et passager,compte,should,yes,no,
+Contacts d'urgence prévenus,sécurité,should,yes,no,
